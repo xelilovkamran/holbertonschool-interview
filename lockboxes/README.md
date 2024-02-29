@@ -1,3 +1,3 @@
-# interview algorithm tasks
+# interview-preperation
 
 algarithmic task for holberton school.
