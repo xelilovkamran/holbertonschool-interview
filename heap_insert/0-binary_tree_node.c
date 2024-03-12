@@ -19,11 +19,12 @@ if (new == NULL)
 return (NULL);
 
 new->n = value;
+new->left = NULL;
+new->right = NULL;
+new->parent = NULL;
 
 if (parent != NULL)
 new->parent = parent;
-else
-new->parent = NULL;
 
 return (new);
 }
