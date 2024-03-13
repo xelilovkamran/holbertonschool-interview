@@ -40,7 +40,7 @@ void *correct_heap(heap_t **root) {
             new->left = NULL;
         }
     }
-}
+};
 
 int height(heap_t *root) {
     int left, right;
@@ -104,7 +104,7 @@ heap_t *heap_insert(heap_t **root, int value) {
     if (*root == NULL) {
         *root = malloc(sizeof(heap_t));
         if (*root == NULL) {
-            return NULL; // Allocation failure
+            return NULL;
         }
         (*root)->n = value;
         (*root)->left = NULL;
@@ -113,9 +113,7 @@ heap_t *heap_insert(heap_t **root, int value) {
         return *root;
     }
 
-    heap_t *new;
-
-    new = malloc(sizeof(heap_t));
+    heap_t *new = malloc(sizeof(heap_t));
 
     if (new == NULL) {
         return (NULL);
@@ -185,4 +183,4 @@ heap_t *heap_insert(heap_t **root, int value) {
     } else {
         heap_insert(&(*root)->right, value);
     }
-}
+};
