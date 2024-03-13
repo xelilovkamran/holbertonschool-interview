@@ -100,6 +100,8 @@ int right_is_full(heap_t *root, int h) {
 }
 
 heap_t *heap_insert(heap_t **root, int value) {
+    heap_t *new;
+    int left_is_ful, right_is_ful;
 
     if (*root == NULL) {
         *root = malloc(sizeof(heap_t));
@@ -113,7 +115,7 @@ heap_t *heap_insert(heap_t **root, int value) {
         return *root;
     }
 
-    heap_t *new = malloc(sizeof(heap_t));
+    new = malloc(sizeof(heap_t));
 
     if (new == NULL) {
         return (NULL);
@@ -175,8 +177,8 @@ heap_t *heap_insert(heap_t **root, int value) {
         return (new);
     }
 
-    int left_is_ful = left_is_full(*root, height(*root));
-    int right_is_ful = right_is_full(*root, height(*root));
+    left_is_ful = left_is_full(*root, height(*root));
+    right_is_ful = right_is_full(*root, height(*root));
 
     if ((left_is_ful == 1 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 0)) {
         heap_insert(&(*root)->left, value);
