@@ -9,7 +9,7 @@
  * Return: pointer to the created node, or NULL on failure.
  */
 
-void *correct_heap(heap_t **root) {
+void correct_heap(heap_t **root) {
     if ((*root)->left != NULL && (*root)->right != NULL) {
         correct_heap(&(*root)->left);
         correct_heap(&(*root)->right);
@@ -40,7 +40,7 @@ void *correct_heap(heap_t **root) {
             new->left = NULL;
         }
     }
-};
+}
 
 int height(heap_t *root) {
     int left, right;
@@ -183,4 +183,6 @@ heap_t *heap_insert(heap_t **root, int value) {
     } else {
         heap_insert(&(*root)->right, value);
     }
-};
+
+    return (new);
+}
