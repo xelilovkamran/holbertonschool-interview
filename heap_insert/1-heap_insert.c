@@ -28,19 +28,18 @@ void correct_heap(heap_t **root) {
             new->left = NULL;
         }
     } else if ((*root)->right != NULL && (*root)->left == NULL && (*root)->right->left != NULL) {
-        heap_t *new = (*root)->right;
-        if (new->n < new->left->n) {
-            (*root)->left = new;
+        if ((*root)->right->n < (*root)->right->left->n) {
+            (*root)->left = (*root)->right;
             (*root)->left->parent = *root;
-            (*root)->right = new->left;
+            (*root)->right = (*root)->right->left;
             (*root)->right->parent = *root;
-            new->left = NULL;
+            (*root)->right->left = NULL;
         } else {
-            (*root)->left = new->left;
+            (*root)->left = (*root)->right->left;
             (*root)->left->parent = *root;
-            new->left = NULL;
+            (*root)->right->left = NULL;
         }
-        free(new);
+        // free(new);
     } else if ((*root)->right == NULL && (*root)->left != NULL && (*root)->left->right != NULL) {
         (*root)->right = (*root)->left->right;
         (*root)->right->parent = *root;
