@@ -39,7 +39,6 @@ void correct_heap(heap_t **root) {
             (*root)->left->parent = *root;
             (*root)->right->left = NULL;
         }
-        // free(new);
     } else if ((*root)->right == NULL && (*root)->left != NULL && (*root)->left->right != NULL) {
         (*root)->right = (*root)->left->right;
         (*root)->right->parent = *root;
