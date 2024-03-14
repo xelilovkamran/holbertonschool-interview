@@ -41,7 +41,6 @@ void correct_heap(heap_t **root) {
             new->left = NULL;
         }
     } else if ((*root)->right == NULL && (*root)->left != NULL && (*root)->left->right != NULL) {
-        printf("saqol\n");
         (*root)->right = (*root)->left->right;
         (*root)->right->parent = *root;
         (*root)->left->right = NULL;
