@@ -13,7 +13,8 @@ void correct_heap(heap_t **root) {
     if ((*root)->left != NULL && (*root)->right != NULL) {
         correct_heap(&(*root)->left);
         correct_heap(&(*root)->right);
-    } else if ((*root)->left != NULL && (*root)->right == NULL && (*root)->left->left != NULL) {
+    }
+    else if ((*root)->left != NULL && (*root)->left->left != NULL && (*root)->left->right == NULL) {
         heap_t *new = (*root)->left;
         if (new->n > new->left->n) {
             (*root)->right = new;
@@ -39,6 +40,12 @@ void correct_heap(heap_t **root) {
             (*root)->left->parent = *root;
             new->left = NULL;
         }
+    } else if ((*root)->right == NULL && (*root)->left != NULL && (*root)->left->right != NULL) {
+        printf("saqol\n");
+        (*root)->right = (*root)->left->right;
+        (*root)->right->parent = *root;
+        (*root)->left->right = NULL;
+        correct_heap(&(*root));
     }
 }
 
@@ -130,12 +137,14 @@ heap_t *heap_insert(heap_t **root, int value) {
     {
         new->parent = *root;
         (*root)->left = new;
+        correct_heap(root);
         return (new);
     }
     else if ((*root)->n > value && (*root)->right == NULL)
     {
         new->parent = *root;
         (*root)->right = new;
+        correct_heap(root);
         return (new);
     }
     else if (((*root)->n < value)) {
@@ -171,7 +180,6 @@ heap_t *heap_insert(heap_t **root, int value) {
                 *root = new;
             }
         }
-
         correct_heap(root);
 
         return (new);
