@@ -105,6 +105,7 @@ int right_is_full(heap_t *root, int h) {
 }
 
 heap_t *heap_insert(heap_t **root, int value) {
+    heap_t *new;
     int left_is_ful, right_is_ful;
 
     if (*root == NULL) {
@@ -119,7 +120,6 @@ heap_t *heap_insert(heap_t **root, int value) {
         return *root;
     }
 
-    heap_t *new;
     new = malloc(sizeof(heap_t));
 
     if (new == NULL) {
