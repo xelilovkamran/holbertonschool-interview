@@ -158,6 +158,8 @@ heap_t *heap_insert(heap_t **root, int value) {
                 new->left = (*root);
                 (*root)->right = NULL;
                 *root = new;
+                (*root)->right->parent = new;
+                (*root)->left->parent = new;
             } else {
                 new->parent = (*root)->parent;
                 new->left = *root;
@@ -172,6 +174,8 @@ heap_t *heap_insert(heap_t **root, int value) {
                 new->right = (*root);
                 (*root)->left = NULL;
                 *root = new;
+                (*root)->right->parent = new;
+                (*root)->left->parent = new;
             } else {
                 new->parent = (*root)->parent;
                 new->right = *root;
@@ -179,6 +183,7 @@ heap_t *heap_insert(heap_t **root, int value) {
                 *root = new;
             }
         }
+
         correct_heap(root);
 
         return (new);
