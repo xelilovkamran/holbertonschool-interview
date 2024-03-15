@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "binary_trees.h"
+#include "0-binary_tree_node.c"
 
 /**
  * heap_insert - function that inserts a value in Max Binary Heap
@@ -117,31 +118,21 @@ heap_t *heap_insert(heap_t **root, int value) {
         return *root;
     }
 
-    new = malloc(sizeof(heap_t));
-
-    if (new == NULL) {
-        return (NULL);
-    }
-
-    new->n = value;
-    new->left = NULL;
-    new->right = NULL;
-    new->parent = NULL;
-
-
     if ((*root)->n > value && (*root)->left == NULL)
     {
-        new->parent = *root;
+        new = binary_tree_node(*root, value);
         (*root)->left = new;
         return (new);
     }
     else if ((*root)->n > value && (*root)->right == NULL)
     {
-        new->parent = *root;
+        new = binary_tree_node(*root, value);
         (*root)->right = new;
         return (new);
     }
     else if (((*root)->n < value)) {
+        new = binary_tree_node(*root, value);
+
         left_is_ful = left_is_full(*root, height(*root));
         right_is_ful = right_is_full(*root, height(*root));
         if ((left_is_ful == 1 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 0)) {
@@ -189,5 +180,5 @@ heap_t *heap_insert(heap_t **root, int value) {
         }
     }
 
-    return (new);
+    return (*root);
 }
