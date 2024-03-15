@@ -128,25 +128,22 @@ heap_t *heap_insert(heap_t **root, int value) {
     new->right = NULL;
     new->parent = NULL;
 
+    left_is_ful = left_is_full(*root, height(*root));
+    right_is_ful = right_is_full(*root, height(*root));
+
     if ((*root)->n > value && (*root)->left == NULL)
     {
         new->parent = *root;
         (*root)->left = new;
-        correct_heap(root);
         return (*root)->left;
     }
     else if ((*root)->n > value && (*root)->right == NULL)
     {
         new->parent = *root;
         (*root)->right = new;
-        correct_heap(root);
         return (*root)->right;
     }
     else if (((*root)->n < value)) {
-        int left_is_ful = left_is_full(*root, height(*root));
-        int right_is_ful = right_is_full(*root, height(*root));
-
-
         if ((left_is_ful == 1 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 0)) {
             if ((*root)->parent == NULL && (*root)->left != NULL) {
                 new->parent = (*root)->parent;
@@ -183,9 +180,6 @@ heap_t *heap_insert(heap_t **root, int value) {
         correct_heap(root);
         return (*root);
     }
-
-    left_is_ful = left_is_full(*root, height(*root));
-    right_is_ful = right_is_full(*root, height(*root));
 
     if ((left_is_ful == 1 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 0)) {
         heap_insert(&(*root)->left, value);
