@@ -209,8 +209,7 @@ heap_t *heap_insert(heap_t **root, int value) {
         heap_insert(&(*root)->right, value);
     }
 
-    tmp = *root;
-    tmp->n = (*root)->n;
-    (*root)->n = value;
-    return (*root);
+    tmp = malloc(sizeof(heap_t));
+    tmp->n = value;
+    return (tmp);
 }
