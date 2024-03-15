@@ -15,17 +15,16 @@ void correct_heap(heap_t **root) {
         correct_heap(&(*root)->right);
     }
     else if ((*root)->left != NULL && (*root)->left->left != NULL && (*root)->left->right == NULL) {
-        heap_t *new = (*root)->left;
-        if (new->n > new->left->n) {
-            (*root)->right = new;
+        if ((*root)->left->n > (*root)->left->left->n) {
+            (*root)->right = (*root)->left;
             (*root)->right->parent = *root;
-            (*root)->left = new->left;
+            (*root)->left = (*root)->left->left;
             (*root)->left->parent = *root;
-            new->left = NULL;
+            (*root)->right->left = NULL;
         } else {
-            (*root)->right = new->left;
+            (*root)->right = (*root)->left->left;
             (*root)->right->parent = *root;
-            new->left = NULL;
+            (*root)->left->left = NULL;
         }
     } else if ((*root)->right != NULL && (*root)->left == NULL && (*root)->right->left != NULL) {
         if ((*root)->right->n < (*root)->right->left->n) {
@@ -66,15 +65,14 @@ int height(heap_t *root) {
 
 int left_is_full(heap_t *root, int h) {
     int count = 0;
-    heap_t *temp = root;
 
-    if (temp == NULL) {
-        temp = temp->left;
+    if (root == NULL) {
+        root = root->left;
     }
 
-    while (temp->left != NULL && temp->right != NULL) {
+    while (root->left != NULL && root->right != NULL) {
         count++;
-        temp = temp->left;
+        root = root->left;
     }
 
     if (count == h - 1) {
@@ -86,15 +84,14 @@ int left_is_full(heap_t *root, int h) {
 
 int right_is_full(heap_t *root, int h) {
     int count = 0;
-    heap_t *temp = root;
 
-    if (temp == NULL) {
-        temp = temp->right;
+    if (root == NULL) {
+        root = root->right;
     }
 
-    while (temp->left != NULL && temp->right != NULL) {
+    while (root->left != NULL && root->right != NULL) {
         count++;
-        temp = temp->right;
+        root = root->right;
     }
 
     if (count == h - 1) {
