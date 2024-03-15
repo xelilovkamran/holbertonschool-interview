@@ -199,15 +199,13 @@ heap_t *heap_insert(heap_t **root, int value) {
 
         correct_heap(root);
         return (new);
-    } else {
-        left_is_ful = left_is_full(*root, height(*root));
-        right_is_ful = right_is_full(*root, height(*root));
-        if ((left_is_ful == 1 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 0)) {
-            heap_insert(&(*root)->left, value);
-        } else {
-            heap_insert(&(*root)->right, value);
-        }
-    }
+    } 
 
-    return (*root);
+    left_is_ful = left_is_full(*root, height(*root));
+    right_is_ful = right_is_full(*root, height(*root));
+    if ((left_is_ful == 1 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 1) || (left_is_ful == 0 && right_is_ful == 0)) {
+        heap_insert(&(*root)->left, value);
+    } else {
+        heap_insert(&(*root)->right, value);
+    }
 }
