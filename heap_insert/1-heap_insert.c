@@ -208,4 +208,9 @@ heap_t *heap_insert(heap_t **root, int value) {
     } else {
         heap_insert(&(*root)->right, value);
     }
+
+    heap_t *tmp = *root;
+    tmp->n = (*root)->n;
+    (*root)->n = value;
+    return (*root);
 }
