@@ -102,7 +102,7 @@ int right_is_full(heap_t *root, int h) {
 }
 
 heap_t *heap_insert(heap_t **root, int value) {
-    heap_t *new;
+    heap_t *new, *tmp;
     int left_is_ful, right_is_ful;
 
     if (*root == NULL) {
@@ -209,7 +209,7 @@ heap_t *heap_insert(heap_t **root, int value) {
         heap_insert(&(*root)->right, value);
     }
 
-    heap_t *tmp = *root;
+    tmp = *root;
     tmp->n = (*root)->n;
     (*root)->n = value;
     return (*root);
