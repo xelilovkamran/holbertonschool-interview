@@ -120,18 +120,48 @@ heap_t *heap_insert(heap_t **root, int value) {
 
     if ((*root)->n > value && (*root)->left == NULL)
     {
-        new = binary_tree_node(*root, value);
+        new = malloc(sizeof(binary_tree_t));
+
+        if (new == NULL)
+        {
+        return (NULL);
+        }
+
+        new->n = value;
+        new->left = NULL;
+        new->right = NULL;
+        new->parent = *root;
         (*root)->left = new;
         return (new);
     }
     else if ((*root)->n > value && (*root)->right == NULL)
     {
-        new = binary_tree_node(*root, value);
+        new = malloc(sizeof(binary_tree_t));
+
+        if (new == NULL)
+        {
+        return (NULL);
+        }
+
+        new->n = value;
+        new->left = NULL;
+        new->right = NULL;
+        new->parent = *root;
         (*root)->right = new;
         return (new);
     }
     else if (((*root)->n < value)) {
-        new = binary_tree_node(*root, value);
+        new = malloc(sizeof(binary_tree_t));
+
+        if (new == NULL)
+        {
+        return (NULL);
+        }
+
+        new->n = value;
+        new->left = NULL;
+        new->right = NULL;
+        new->parent = NULL;
 
         left_is_ful = left_is_full(*root, height(*root));
         right_is_ful = right_is_full(*root, height(*root));
