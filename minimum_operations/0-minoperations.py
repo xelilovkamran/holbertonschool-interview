@@ -5,42 +5,29 @@ Main file for testing
 """
 
 
-def minOperations(n):
+def min_operation(n):
     if n == 1 or n <= 0:
         return 0
-
-    operations = 0
-    number = n
-    isNotDivided = False
-    string = 0
-
-    while True:
-        for i in range(2, int(number / 2) + 2):
-            if number % i == 0 and number != i:
-                number /= i
-                isNotDivided = False
-            else:
-                isNotDivided = True
-
-        if isNotDivided and number == n:
-            number = 1
-            break
-        elif isNotDivided and number != n:
+    length = 0
+    min_operation = 0
+    for i in range(2, n//2+2):
+        if n % i == 0:
+            min_operation = i
             break
 
-    if isNotDivided:
-        operations += number
-        string += operations
+    count = min_operation
+    length = min_operation
+    print(min_operation, count, length)
 
-        while n % number == 0 and n != string:
+    while n != length:
+        if n % length == 0:
+            min_operation = length
+            length += min_operation
 
-            if number % string == 0:
-                operations += 2
-            else:
-                operations += 1
-            string += number
+            count += 2
 
-            if (n % (number + string)) != 0:
-                number = string
+        else:
+            count += 1
+            length += min_operation
 
-    return int(operations)
+    return count
