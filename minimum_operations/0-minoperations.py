@@ -44,6 +44,3 @@ def minOperations(n):
                 number = string
 
     return operations
-
-
-print(minOperations(21))
