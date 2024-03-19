@@ -5,7 +5,7 @@ Main file for testing
 """
 
 
-def minOperation(n):
+def minOperations(n):
     if n == 1 or n <= 0:
         return 0
     length = 0
