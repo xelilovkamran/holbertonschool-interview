@@ -43,4 +43,4 @@ def minOperations(n):
             if (n % (number + string)) != 0:
                 number = string
 
-    return operations
+    return int(operations)
