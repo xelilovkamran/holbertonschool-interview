@@ -5,7 +5,7 @@ Main file for testing
 """
 
 
-def min_operation(n):
+def minOperation(n):
     if n == 1 or n <= 0:
         return 0
     length = 0
@@ -17,7 +17,6 @@ def min_operation(n):
 
     count = min_operation
     length = min_operation
-    print(min_operation, count, length)
 
     while n != length:
         if n % length == 0:
