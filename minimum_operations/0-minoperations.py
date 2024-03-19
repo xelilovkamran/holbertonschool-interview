@@ -6,18 +6,19 @@ Main file for testing
 
 
 def minOperations(n):
+    if n == 1 or n <= 0:
+        return 0
 
     operations = 0
     number = n
     isNotDivided = False
-    string = 1
+    string = 0
 
     while True:
         for i in range(2, int(number / 2) + 2):
             if number % i == 0 and number != i:
                 number /= i
                 isNotDivided = False
-                break
             else:
                 isNotDivided = True
 
@@ -29,15 +30,20 @@ def minOperations(n):
 
     if isNotDivided:
         operations += number
-        string += (operations - 1)
-        while n % string == 0 and n != string:
+        string += operations
+
+        while n % number == 0 and n != string:
+
             if number % string == 0:
                 operations += 2
             else:
                 operations += 1
             string += number
 
-            if (n % (string + number)) != 0:
+            if (n % (number + string)) != 0:
                 number = string
 
     return operations
+
+
+print(minOperations(21))
