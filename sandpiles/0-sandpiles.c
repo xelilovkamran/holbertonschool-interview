@@ -12,9 +12,7 @@ for (i = 0; i < 3; i++)
 for (j = 0; j < 3; j++)
 {
 if (grid[i][j] > 3)
-{
 return (0);
-}
 }
 }
 return (1);
