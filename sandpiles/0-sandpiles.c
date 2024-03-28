@@ -38,8 +38,6 @@ static void print_grid(int grid[3][3])
     }
 }
 
-// write description for sandpiles_sum
-
 /**
  * sandpiles_sum - Computes the sum of two sandpiles
  * @grid1: Left 3x3 grid
