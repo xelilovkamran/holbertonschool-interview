@@ -19,19 +19,34 @@ int is_palindrome(listint_t **head) {
         n++;
     }
 
-    array = (int *) malloc(sizeof(int) * n);
+    array = (int *) malloc(sizeof(int) * (n / 2));
+
+    if (array == NULL) {
+        return (0);
+    }
+    
     current = *head;
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n / 2; i++) {
         array[i] = current->n;
         current = current->next;
     }
+    current = *head;
 
-    for (i = 0, j = n - 1; i < n / 2; i++, j--) {
-        if (array[i] != array[j]) {
+    int termination_point;
+
+    if (n % 2 == 0) {
+        termination_point = n / 2;
+    } else {
+        termination_point = n / 2 + 1;
+    }
+
+    for (int i = (n / 2) - 1; i >= termination_point; i--) {
+        if (array[i] != current->n) {
             free(array);
             free(current);
             return (0);
         }
+        current = current->next;
     }
 
     free(array);
