@@ -29,13 +29,12 @@ int is_palindrome(listint_t **head) {
     for (i = 0, j = n - 1; i < n / 2; i++, j--) {
         if (array[i] != array[j]) {
             free(array);
-            free_listint(*head);
+            free(current);
             return (0);
         }
     }
 
     free(array);
-    free_listint(*head);
-
+    free(current);
     return (1);
 }
