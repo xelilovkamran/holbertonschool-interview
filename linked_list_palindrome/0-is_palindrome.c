@@ -3,11 +3,12 @@
 #include "lists.h"
 
 int is_palindrome(listint_t **head) {
+    listint_t *current;
+    
     if (*head == NULL) {
         return (1);
     }
 
-    listint_t *current;
     int n, i, j;
     int *array;
 
