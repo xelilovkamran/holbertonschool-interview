@@ -21,10 +21,6 @@ int is_palindrome(listint_t **head) {
 
     array = (int *) malloc(sizeof(int) * (n / 2));
 
-    if (array == NULL) {
-        return (0);
-    }
-    
     current = *head;
     for (i = 0; i < n / 2; i++) {
         array[i] = current->n;
