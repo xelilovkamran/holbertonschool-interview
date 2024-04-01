@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "lists.h"
 
 int is_palindrome(listint_t **head) {
     if (*head == NULL) {
         return (1);
     }
 
-    listint_t *current = *head;
+    listint_t *current;
     int n, i, j;
     int *array;
+
+    current = *head;
 
     n = 0;
     while (current != NULL) {
