@@ -4,7 +4,7 @@
 
 int is_palindrome(listint_t **head) {
     listint_t *current;
-    int n, i, termination_point;
+    int n, i, j;
     int *array;
 
     if (*head == NULL) {
@@ -19,29 +19,20 @@ int is_palindrome(listint_t **head) {
         n++;
     }
 
-    array = (int *) malloc(sizeof(int) * (n / 2));
+    array = (int *) malloc(sizeof(int) * n);
 
     current = *head;
-    for (i = 0; i < n / 2; i++) {
+    for (i = 0; i < n; i++) {
         array[i] = current->n;
         current = current->next;
     }
-    current = *head;
-
-
-    if (n % 2 == 0) {
-        termination_point = n / 2;
-    } else {
-        termination_point = n / 2 + 1;
-    }
-
-    for (i = (n / 2) - 1; i >= termination_point; i--) {
-        if (array[i] != current->n) {
+    
+    for (i = 0, j = n - 1; i < n / 2; i++, j--) {
+        if (array[i] != array[j]) {
             free(array);
             free(current);
             return (0);
         }
-        current = current->next;
     }
 
     free(array);
