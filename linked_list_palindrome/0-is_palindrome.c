@@ -4,13 +4,12 @@
 
 int is_palindrome(listint_t **head) {
     listint_t *current;
-    
+    int n, i, j;
+    int *array;
+
     if (*head == NULL) {
         return (1);
     }
-
-    int n, i, j;
-    int *array;
 
     current = *head;
 
