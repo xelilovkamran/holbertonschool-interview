@@ -1,10 +1,8 @@
 #!/usr/bin/python3
-"""
-program that reads stdin line by line
-and computes metrics
-"""
+"""Input stats"""
 
 import sys
+
 
 logs = []
 total_size = 0
