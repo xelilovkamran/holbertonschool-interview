@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""Input stats"""
-import sys
+"""This module reads stdin line by line and computes metrics"""
 
+import sys
 
 logs = []
 total_size = 0
-
 filtering_by_status = {
     "200": 0,
     "301": 0,
