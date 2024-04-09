@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """Input stats"""
-
 import sys
 
 
@@ -31,7 +30,6 @@ try:
             for element in filtering_by_status.items():
                 if element[1] != 0:
                     print(f"{element[0]}: {element[1]}")
-
 except KeyboardInterrupt:
     print(f"File size: {total_size}")
     for element in filtering_by_status.items():
