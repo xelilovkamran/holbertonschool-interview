@@ -5,13 +5,11 @@ and computes metrics
 """
 
 import sys
-from typing import List, Dict
 
+logs = []
+total_size = 0
 
-logs: List[str] = []
-total_size: int = 0
-
-filtering_by_status: Dict[str, int] = {
+filtering_by_status = {
     "200": 0,
     "301": 0,
     "400": 0,
