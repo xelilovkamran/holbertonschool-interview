@@ -1,12 +1,18 @@
 #!/usr/bin/python3
-"""program that reads stdin line by line and computes metrics"""
+"""
+program that reads stdin line by line
+and computes metrics
+"""
 
 import sys
 from typing import List, Dict
 
 
 def main() -> None:
-    """main function to parse logs and print metrics"""
+    """
+    main function to parse
+    logs and print metrics
+    """
     logs: List[str] = []
     total_size: int = 0
 
