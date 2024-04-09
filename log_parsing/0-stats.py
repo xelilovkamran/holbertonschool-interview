@@ -17,7 +17,6 @@ filtering_by_status = {
     "500": 0
 }
 
-
 try:
     for line in sys.stdin:
         line = line.strip()
