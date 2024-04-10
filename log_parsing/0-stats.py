@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""This module reads stdin line by line and computes metrics"""
+
+"""This module reads stdin
+line by line and computes metrics"""
 
 import sys
 
@@ -16,6 +18,15 @@ filtering_by_status = {
     "500": 0
 }
 
+
+def print_msg():
+    """Prints the stats"""
+    print(f"File size: {total_size}")
+    for element in filtering_by_status.items():
+        if element[1] != 0:
+            print(f"{element[0]}: {element[1]}")
+
+
 try:
     for line in sys.stdin:
         line = line.strip()
@@ -24,12 +35,7 @@ try:
         filtering_by_status[line[-2]] += 1
         total_size += int(line[-1])
         if len(logs) % 10 == 0 and len(logs) != 0:
-            print(f"File size: {total_size}")
-            for element in filtering_by_status.items():
-                if element[1] != 0:
-                    print(f"{element[0]}: {element[1]}")
+            print_msg()
+
 except KeyboardInterrupt:
-    print(f"File size: {total_size}")
-    for element in filtering_by_status.items():
-        if element[1] != 0:
-            print(f"{element[0]}: {element[1]}")
+    print_msg()
