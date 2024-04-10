@@ -36,8 +36,8 @@ def print_statistics(statuses, total):
 
 try:
     for line in sys.stdin:
-        new_line = line.rstrip()
-        if re.match(pattern1, new_line) or re.match(pattern2, new_line) or re.match(pattern3, new_line):
+        new_line = line.rstrip().split(" ")
+        if len(new_line) == 9 or len(new_line) == 7:
             try:
                 new_line = new_line.split(" ")
                 logs += 1
