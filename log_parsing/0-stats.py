@@ -21,7 +21,6 @@ filtering_by_status = {
 
 
 def print_msg(statues, total_size):
-    """Prints the stats"""
     if total_size == 0:
         return
     print(f"File size: {total_size}")
@@ -33,11 +32,14 @@ def print_msg(statues, total_size):
 try:
     for line in sys.stdin:
         line = line.strip()
-        logs.append(line)
-        line = line.split(" ")
-        filtering_by_status[line[-2]] += 1
-        total_size += int(line[-1])
-        if len(logs) % 10 == 0 and len(logs) != 0:
-            print_msg(filtering_by_status, total_size)
+        try:
+            logs.append(line)
+            line = line.split(" ")
+            filtering_by_status[line[-2]] += 1
+            total_size += int(line[-1])
+            if len(logs) % 10 == 0 and len(logs) != 0:
+                print_msg(filtering_by_status, total_size)
+        except BaseException:
+            pass
 finally:
     print_msg(filtering_by_status, total_size)
