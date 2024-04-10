@@ -39,7 +39,7 @@ try:
         new_line = line.rstrip().split(" ")
         if len(new_line) == 9 or len(new_line) == 7:
             try:
-                new_line = new_line.split(" ")
+                # new_line = new_line.split(" ")
                 logs += 1
                 status_codes[new_line[-2]] += 1
                 total_size += int(new_line[-1])
