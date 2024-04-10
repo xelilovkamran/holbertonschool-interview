@@ -10,7 +10,11 @@ import re
 
 logs = 0
 total_size = 0
-pattern = r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\] "(.*?)" (\d{3}) (\d+)$'
+
+pattern1 = r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\] "(.*?)" (\d{3}) (\d+)$'
+pattern2 = r'^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})-\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\] "(.*?)" (\d{3}) (\d+)$'
+pattern3 = r'^([\w.-]+) - \[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\] "(.*?)" (\d{3}) (\d+)$'
+
 status_codes = {
     "200": 0,
     "301": 0,
@@ -33,8 +37,7 @@ def print_statistics(statuses, total):
 try:
     for line in sys.stdin:
         new_line = line.rstrip()
-        match = re.match(pattern, new_line)
-        if not match:
+        if (not re.match(pattern1, new_line)) or (not re.match(pattern2, new_line)) or (not re.match(pattern3, new_line)):
             continue
         try:
             new_line = new_line.split(" ")
