@@ -21,8 +21,6 @@ filtering_by_status = {
 
 
 def print_msg(statues, total_size):
-    if total_size == 0:
-        return
     print(f"File size: {total_size}")
     for element in statues.items():
         if element[1] != 0:
