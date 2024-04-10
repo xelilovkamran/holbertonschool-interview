@@ -39,5 +39,5 @@ try:
         total_size += int(line[-1])
         if len(logs) % 10 == 0 and len(logs) != 0:
             print_msg(filtering_by_status, total_size)
-except KeyboardInterrupt:
+finally:
     print_msg(filtering_by_status, total_size)
