@@ -37,16 +37,15 @@ def print_statistics(statuses, total):
 try:
     for line in sys.stdin:
         new_line = line.rstrip()
-        if (not re.match(pattern1, new_line)) or (not re.match(pattern2, new_line)) or (not re.match(pattern3, new_line)):
-            continue
-        try:
-            new_line = new_line.split(" ")
-            logs += 1
-            status_codes[new_line[-2]] += 1
-            total_size += int(new_line[-1])
-            if logs % 10 == 0 and logs != 0:
-                print_statistics(status_codes, total_size)
-        except BaseException:
-            pass
+        if re.match(pattern1, new_line) or re.match(pattern2, new_line) or re.match(pattern3, new_line):
+            try:
+                new_line = new_line.split(" ")
+                logs += 1
+                status_codes[new_line[-2]] += 1
+                total_size += int(new_line[-1])
+                if logs % 10 == 0 and logs != 0:
+                    print_statistics(status_codes, total_size)
+            except BaseException:
+                pass
 finally:
     print_statistics(status_codes, total_size)
