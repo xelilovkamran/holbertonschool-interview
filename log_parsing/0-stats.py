@@ -31,6 +31,8 @@ def print_statistics(statuses, total):
 try:
     for line in sys.stdin:
         new_line = line.rstrip().split(" ")
+        if len(new_line) != 9:
+            continue
         try:
             logs += 1
             status_codes[new_line[-2]] += 1
