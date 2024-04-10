@@ -17,9 +17,9 @@ filtering_by_status = {
 }
 
 
-def print_msg(statues, total):
+def print_statistics(statuses, total):
     print(f"File size: {total}")
-    for element in statues.items():
+    for element in statuses.items():
         if element[1] != 0:
             print(f"{element[0]}: {element[1]}")
 
@@ -32,8 +32,8 @@ try:
             filtering_by_status[new_line[-2]] += 1
             total_size += int(new_line[-1])
             if logs % 10 == 0 and logs != 0:
-                print_msg(filtering_by_status, total_size)
+                print_statistics(filtering_by_status, total_size)
         except BaseException:
             pass
 finally:
-    print_msg(filtering_by_status, total_size)
+    print_statistics(filtering_by_status, total_size)
