@@ -20,10 +20,12 @@ filtering_by_status = {
 }
 
 
-def print_msg():
+def print_msg(statues, total_size):
     """Prints the stats"""
+    if total_size == 0:
+        return
     print(f"File size: {total_size}")
-    for element in filtering_by_status.items():
+    for element in statues.items():
         if element[1] != 0:
             print(f"{element[0]}: {element[1]}")
 
@@ -36,7 +38,6 @@ try:
         filtering_by_status[line[-2]] += 1
         total_size += int(line[-1])
         if len(logs) % 10 == 0 and len(logs) != 0:
-            print_msg()
-
+            print_msg(filtering_by_status, total_size)
 except KeyboardInterrupt:
-    print_msg()
+    print_msg(filtering_by_status, total_size)
