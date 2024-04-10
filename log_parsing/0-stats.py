@@ -29,12 +29,12 @@ def print_msg(statues, total_size):
 
 try:
     for line in sys.stdin:
-        line = line.strip()
+        new_line = line.rstrip()
         try:
-            logs.append(line)
-            line = line.split(" ")
-            filtering_by_status[line[-2]] += 1
-            total_size += int(line[-1])
+            logs.append(new_line)
+            new_line = new_line.split(" ")
+            filtering_by_status[new_line[-2]] += 1
+            total_size += int(new_line[-1])
             if len(logs) % 10 == 0 and len(logs) != 0:
                 print_msg(filtering_by_status, total_size)
         except BaseException:
