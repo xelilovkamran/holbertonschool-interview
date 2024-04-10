@@ -27,15 +27,20 @@ def print_msg():
             print(f"{element[0]}: {element[1]}")
 
 
-try:
-    for line in sys.stdin:
-        line = line.strip()
-        logs.append(line)
-        line = line.split(" ")
-        filtering_by_status[line[-2]] += 1
-        total_size += int(line[-1])
-        if len(logs) % 10 == 0 and len(logs) != 0:
-            print_msg()
+def main():
+    try:
+        for line in sys.stdin:
+            line = line.strip()
+            logs.append(line)
+            line = line.split(" ")
+            filtering_by_status[line[-2]] += 1
+            total_size += int(line[-1])
+            if len(logs) % 10 == 0 and len(logs) != 0:
+                print_msg()
 
-except KeyboardInterrupt:
-    print_msg()
+    except KeyboardInterrupt:
+        print_msg()
+
+
+if __name__ == "__main__":
+    main()
