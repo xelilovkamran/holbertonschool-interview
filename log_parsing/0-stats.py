@@ -1,11 +1,15 @@
 #!/usr/bin/python3
+
+
 """Input stats"""
+
 
 import sys
 
+
 logs = 0
 total_size = 0
-filtering_by_status = {
+status_codes = {
     "200": 0,
     "301": 0,
     "400": 0,
@@ -18,10 +22,10 @@ filtering_by_status = {
 
 
 def print_statistics(statuses, total):
-    print(f"File size: {total}")
-    for element in statuses.items():
-        if element[1] != 0:
-            print(f"{element[0]}: {element[1]}")
+    print("File size: {}".format(total))
+    for key, value in sorted(statuses.items()):
+        if value != 0:
+            print("{}: {}".format(key, value))
 
 
 try:
@@ -29,11 +33,11 @@ try:
         new_line = line.rstrip().split(" ")
         try:
             logs += 1
-            filtering_by_status[new_line[-2]] += 1
+            status_codes[new_line[-2]] += 1
             total_size += int(new_line[-1])
             if logs % 10 == 0 and logs != 0:
-                print_statistics(filtering_by_status, total_size)
+                print_statistics(status_codes, total_size)
         except BaseException:
             pass
 finally:
-    print_statistics(filtering_by_status, total_size)
+    print_statistics(status_codes, total_size)
