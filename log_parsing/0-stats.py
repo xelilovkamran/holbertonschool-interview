@@ -5,10 +5,12 @@
 
 
 import sys
+import re
 
 
 logs = 0
 total_size = 0
+pattern = r'^(\S+) - \[(.*?)\] "(.*?)" (\d+) (\d+)$'
 status_codes = {
     "200": 0,
     "301": 0,
@@ -30,10 +32,12 @@ def print_statistics(statuses, total):
 
 try:
     for line in sys.stdin:
-        new_line = line.rstrip().split(" ")
-        if len(new_line) != 9:
+        new_line = line.rstrip()
+        match = re.match(pattern, new_line)
+        if not match:
             continue
         try:
+            new_line = new_line.split(" ")
             logs += 1
             status_codes[new_line[-2]] += 1
             total_size += int(new_line[-1])
