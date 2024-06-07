@@ -11,7 +11,6 @@
  *
  * Return: pointer to the root node of the created AVL tree, or NULL if failed
  */
-
 binary_tree_t *add_node(int *array, size_t size, avl_t *parent)
 {
 	binary_tree_t *node;
