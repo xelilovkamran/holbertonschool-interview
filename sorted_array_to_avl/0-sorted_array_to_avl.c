@@ -2,20 +2,17 @@
 #include <stdio.h>
 #include "binary_trees.h"
 
-// Add node to AVL tree
-
-binary_tree_t *add_node(int *array, size_t size, avl_t *parent)
-{
 /**
- * sorted_array_to_avl - builds an AVL tree from sorted array without rotation
+ * add_node_avl - builds tree from sorted array, adding nodes recursively
  *
  * @array: pointer to the first element of the array to be converted
  * @size: number of elements in the array
  * @parent: pointer to the parent node
- *
+ * 
  * Return: pointer to the root node of the created AVL tree, or NULL if failed
  */
-    
+binary_tree_t *add_node(int *array, size_t size, avl_t *parent)
+{
 	binary_tree_t *node;
 
 	node = malloc(sizeof(avl_t));
@@ -43,6 +40,14 @@ binary_tree_t *add_node(int *array, size_t size, avl_t *parent)
 	return (node);
 }
 
+/**
+ * sorted_array_to_avl - builds an AVL tree from sorted array without rotation
+ *
+ * @array: pointer to the first element of the array to be converted
+ * @size: number of elements in the array
+ *
+ * Return: pointer to the root node of the created AVL tree, or NULL if failed
+ */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	if (!array)
