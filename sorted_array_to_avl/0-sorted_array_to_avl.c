@@ -2,6 +2,16 @@
 #include <stdio.h>
 #include "binary_trees.h"
 
+/**
+ * sorted_array_to_avl - builds an AVL tree from sorted array without rotation
+ *
+ * @array: pointer to the first element of the array to be converted
+ * @size: number of elements in the array
+ * @parent: pointer to the parent node
+ *
+ * Return: pointer to the root node of the created AVL tree, or NULL if failed
+ */
+
 binary_tree_t *add_node(int *array, size_t size, avl_t *parent)
 {
 	binary_tree_t *node;
