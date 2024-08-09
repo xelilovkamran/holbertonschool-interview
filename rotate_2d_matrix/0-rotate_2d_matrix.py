@@ -4,8 +4,6 @@
 
 
 def rotate_2d_matrix(matrix):
-    """ Function that rotates a matrix 90 degrees clockwise
-    """
 
     # create a replica of the original matrix
     copy = matrix[:]
